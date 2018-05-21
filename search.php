@@ -1,20 +1,12 @@
-<!DOCTYPE HTML>
 <?php
-
-
-
-require('config.php');
-
-$mysqli = new mysqli($db_host, $db_user, $db_pwd, $db_name);
-if (mysqli_connect_error())
-    echo mysqli_connect_error();
-$mysqli->set_charset("utf8");
-
-
-
-
+/**
+ * Created by PhpStorm.
+ * User: wangning
+ * Date: 2018/5/22
+ * Time: 上午1:20
+ */
   //$con =mysql_connect("localhost","root","123456")or die ("mysql链接失败");
-  $con = mysql_connect ( "localhost","root","123456");//连接数据库
+  $con = mysql_connect ( "127.0.0.1:8080","root","123456");//连接数据库
   if(!$con){
     echo("服务器连接失败！请检查后重试！");
   }
