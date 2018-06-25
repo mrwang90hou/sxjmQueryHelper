@@ -41,17 +41,14 @@ else {
 mysql_close($con);
 ?>
 */
-//config.php 数据库配置文件
-/*
-$db_host = '192.168.1.103';
-$db_name = 'test';
-$db_user = 'root';
-$db_pwd = 'a123456';
-*/
+
+//（2）mysqli连接数据库方式
 $db_host = '127.0.0.1';
 $db_name = 'GUET_MathematicalModeling_Helper';
 $db_user = 'root';
-$db_pwd = '123456';
+$db_pwd = 'wangning1995';
+
+
 $db_port = '80';
 
 

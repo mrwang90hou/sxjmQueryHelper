@@ -14,6 +14,7 @@ function showInfo() {
     grade = document.getElementById("grade").value
     if (name.length == 0) {
         document.getElementById("result").innerHTML = "请先输入您要搜索的内容！"
+        alert("请先输入您要搜索的内容！");
         return
     }
     xmlHttp = GetXmlHttpObject() 

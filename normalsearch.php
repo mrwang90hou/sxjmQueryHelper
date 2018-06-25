@@ -11,7 +11,7 @@ $mysqli = new mysqli($db_host,$db_user,$db_pwd,$db_name,$db_port);
 if ($mysqli_connect_error())
     echo $mysqli_connect_error();
 $mysqli->set_charset("utf8");
-//
+
 $content = $_GET['content'];
 $grade = $_GET["grade"];
 //`years`, `teamMember1`, `teamMember2`, `teamMember3`, `teacher`, `campus`
