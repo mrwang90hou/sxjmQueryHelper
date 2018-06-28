@@ -47,6 +47,20 @@ $db_host = '127.0.0.1';
 $db_name = 'GUET_MathematicalModeling_Helper';
 $db_user = 'root';
 $db_pwd = 'wangning1995';
+
+
+
+define("DB_HOST", '127.0.0.1');
+define("DB_USER", 'root');
+define('DB_PWD', 'wangning1995');
+define('DB_NAME', 'GUET_MathematicalModeling_Helper');
+
+define('DB_PORT', '3306');
+define('DB_TYPE', 'mysql');
+define('DB_CHARSET', 'utf8');
+
+
+
 //$db_port = '80';
 
 //

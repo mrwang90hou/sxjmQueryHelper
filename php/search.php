@@ -20,6 +20,7 @@ session_start();
     require '../config.php';
     //include 'config.php';
     $value=$_POST["content"];
+    $_SESSION["p"]="";        // 存储 session 数据【用于存储判断结果是否为空】
     //echo '传递参数为：'.$value.'<br>';
     $mysqli = new mysqli($db_host, $db_user, $db_pwd, $db_name);
     if (mysqli_connect_error()) {
@@ -80,11 +81,11 @@ while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
     ?>
     <!--         奇偶行数背景色不同-->
     <tr style='background:<?php if($i%2){ echo "#FFFFFF"; }else{ echo "#E8E8E8"; } ?>'>
-<!--        <td width="15%">--><?php //echo $row['DetailTypeNumber'];$_SESSION["p"]=$row['DetailTypeNumber'];  ?><!--</td>-->
+        <td><?php echo ++$i;$_SESSION["p"]=$row['serialNumber'];  ?></td>
 <!--        <td width="40%" style="color:#0033FF"><a href="detail.php?$id=--><?php //echo $row['id']; ?><!--" target="_blank">--><?php //echo $row['DetailName'];?><!--</a></td>-->
 <!--        <td width="40%">--><?php //echo $row['DetailName_EN']; ?><!--</td>-->
 <!--        -->
-        <td><?php echo ($row["serialNumber"]); ?></td>
+<!--        <td>--><?php //echo ($row["serialNumber"]); ?><!--</td>-->
         <td><?php echo ($row["years"]); ?></td>
         <td><?php echo ($row["teamMember1"]); ?></td>
         <td><?php echo ($row["teamMember2"]); ?></td>
@@ -113,7 +114,7 @@ while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
         <td><?php echo ($row["nationPrize"]);?></td>
     </tr>
     <?php
-    $i++;
+//    $i++;
 }
 // 释放结果集
 mysqli_free_result($result);
@@ -121,7 +122,11 @@ mysqli_free_result($result);
 ?>
 
 <a href="../index.html">🔙返回</a>
-
-<?php //require "templates/footer.php"; ?>
-
+<?php
+if(!($_SESSION["p"])){        // 检索 session 数据【判断结果是否为空】
+?>
+<div align="center" style="color:#999999;margin-top:130px;">您输入的条件暂时无符合条件的结果，<br/>请检查是否有误！</div>
+<?php
+}
+?>
 </html>
