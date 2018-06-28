@@ -27,8 +27,8 @@ class Search{
         return self::$_instance;
     }
     function search(){
-        self.$this->content = $_POST["content"];
-        $value=$_POST["content"];
+        self.$this->content = $_GET["content"];
+//        $value=$_POST["content"];
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME);
         if (mysqli_connect_error()) {
             echo mysqli_connect_error();
@@ -37,10 +37,14 @@ class Search{
             //echo "传参为：".$value;
         }
         $mysqli->set_charset("utf8");
-        $sql = "SELECT * FROM NationalCompetitionGrade where years like '%{$value}%' or teamMember1 like '%{$value}%' or teamMember2 = '{$value}' or teamMember3 like '%{$value}%' or teacher like '%{$value}%' or campus like '%{$value}%' order by serialNumber";
+        $sql = "SELECT * FROM NationalCompetitionGrade where years like '%{$this->content}%' or teamMember1 like '%{$this->content}%' or teamMember2 = '{$this->content}' or teamMember3 like '%{$this->content}%' or teacher like '%{$this->content}%' or campus like '%{$this->content}%' order by serialNumber";
         //echo "</br>SQL语句为：".$sql;
         $result = $mysqli->query($sql);
-        $allrows = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+        //getAll;
+        //$allrows = $mysqli->
+        $allrows = mysqli_fetch_all($result);
+        //$allrows = mysqli_fetch_array($result,MYSQLI_ASSOC);
         Response::show(200,'查询列表获取成功',$allrows,'json');
     }
 }
