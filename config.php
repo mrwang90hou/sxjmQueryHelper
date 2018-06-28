@@ -41,24 +41,22 @@ else {
 mysql_close($con);
 ?>
 */
-
+//config.php 数据库配置文件
 //（2）mysqli连接数据库方式
 $db_host = '127.0.0.1';
 $db_name = 'GUET_MathematicalModeling_Helper';
 $db_user = 'root';
 $db_pwd = 'wangning1995';
+//$db_port = '80';
 
-
-$db_port = '80';
-
-
-
-$pdo = new PDO('mysql:host=localhost;dbname=database_name;port=3306','用户名','密码');
-$pdo->exec('set names utf8');
-
-$stmt = $pdo->prepare("select * from table where id =:id");
-$stmt->bindValue(':id',1,PDO::PARAM_INT);
-$stmt->execute();
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$rows = $pdo->query("select * from table where id = 1")->fetchAll(PDO::FETCH_ASSOC);
+//
+//$pdo = new PDO('mysql:host=localhost;dbname=database_name;port=3306','用户名','密码');
+//$pdo->exec('set names utf8');
+//
+//$stmt = $pdo->prepare("select * from table where id =:id");
+//$stmt->bindValue(':id',1,PDO::PARAM_INT);
+//$stmt->execute();
+//$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//$rows = $pdo->query("select * from table where id = 1")->fetchAll(PDO::FETCH_ASSOC);
+?>

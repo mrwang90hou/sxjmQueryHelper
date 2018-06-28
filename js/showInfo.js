@@ -9,7 +9,7 @@ function BindEnter() {
 }
 function showInfo() {
     var name
-    var grade 
+    var grade
     name = document.getElementById("name").value 
     grade = document.getElementById("grade").value
     if (name.length == 0) {
