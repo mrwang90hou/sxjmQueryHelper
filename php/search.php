@@ -6,8 +6,9 @@ session_start();
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>查询结果</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<!--    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">-->
 </head>
+<?php //require "../templates/header.php"; ?>
 <?php
 /**
  * Created by PhpStorm.
@@ -19,22 +20,22 @@ session_start();
     require '../config.php';
     //include 'config.php';
     $value=$_POST["content"];
-    echo '传递参数为：'.$value.'<br>';
+    //echo '传递参数为：'.$value.'<br>';
     $mysqli = new mysqli($db_host, $db_user, $db_pwd, $db_name);
     if (mysqli_connect_error()) {
         echo mysqli_connect_error();
     }else{
-        echo "连接MySQL成功！！！</br>";
-        echo "传参为：".$value;
+        //echo "连接MySQL成功！！！</br>";
+        //echo "传参为：".$value;
     }
     $mysqli->set_charset("utf8");
     $sql = "SELECT * FROM NationalCompetitionGrade where years like '%{$value}%' or teamMember1 like '%{$value}%' or teamMember2 = '{$value}' or teamMember3 like '%{$value}%' or teacher like '%{$value}%' or campus like '%{$value}%' order by serialNumber";
-    echo "</br>SQL语句为：".$sql;
+    //echo "</br>SQL语句为：".$sql;
     $result = $mysqli->query($sql);
-    echo "<br>条数:".mysqli_num_rows( $result ); //条数
-    echo "<br>";
+    //echo "<br>条数:".mysqli_num_rows( $result ); //条数
+    //echo "<br>";
     //mysqli_query($con,"SELECT * FROM websites");
-    echo "受影响的行数: " . mysqli_affected_rows($mysqli);
+    //echo "受影响的行数: " . mysqli_affected_rows($mysqli);
 
 /*  PDO数据库连接
 //try {
@@ -53,13 +54,12 @@ session_start();
     */
 ?>
 
-<h2>Delete users</h2>
+<h2>查询结果</h2>
 
 <?php //if ($success) echo $success;
 
 echo '<table width="100%" border="1px" cellspacing="0" bordercolor="#CCCCCC" style="font-size:15px;color:#666666;text-align:center;">
 	 <tr>
-         
         <th>序号</th>
         <th>年份</th>
         <th>队长</th>
@@ -89,16 +89,28 @@ while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
         <td><?php echo ($row["teamMember1"]); ?></td>
         <td><?php echo ($row["teamMember2"]); ?></td>
         <td><?php echo ($row["teamMember3"]); ?></td>
+        <?php
+        if ($row['teacher']=="数模组")
+        {
+        ?>
         <td>
-            <a href="teacher.php?$id=<?php echo $row["serialNumber"]; ?>">
+            <a href="teacher.php?$serialNumber=<?php echo $row["serialNumber"]; ?>">
                 <?php echo $row['teacher'];?></a>
         </td>
+            <?php
+        }
+        else {
+            ?>
+            <td>
+                <a><?php echo $row['teacher'];?></a>
+            </td>
+            <?php
+        }
+        ?>
         <td><?php echo ($row["campus"]); ?> </td>
         <td><?php echo ($row["awardLevel"]); ?> </td>
         <td><?php echo ($row["groups"]); ?> </td>
         <td><?php echo ($row["nationPrize"]);?></td>
-
-
     </tr>
     <?php
     $i++;

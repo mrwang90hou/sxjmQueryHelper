@@ -25,9 +25,7 @@
     <div class="blur"></div>
   </div>
   <div class="signOut">
-    <!--<h1>桂电数学建模比赛信息查询</h1>-->
-      <h1>信息查询</h1>
-
+    <h1>桂电数学建模比赛信息查询</h1>
       <div class="container1">
       <form method="post" action="php/search.php" id="form1">
         <div class="form-group">
@@ -48,8 +46,7 @@
       </form>
     </div>
 	<h5 id="result"></h5>
-	<!--<h6>版权所有 &copy; 桂电北海数学建模协会</h6>-->
-      <h6>版权所有 &copy; mrwang90hou</h6>
+	<h6>版权所有 &copy; 桂电北海数学建模协会</h6>
 
   </div>
 </div>
@@ -59,25 +56,19 @@
     function getvalue()
     {
         //这里判断你想判断的字段是否为空，为空就return false
-        // var input = document.getElementById('sp').value;
-        //
-        // if(input == null || input == "")
-        // {
-        //     alert("请输入查找信息!!!");
-        //     //返回false;
-        //     //input.focus();
-        // }
-        // else
-        // {
-        //     alert(input);//提交的数值为
-        //     //document.getElementById('form1').submit();
-        //
-        // }
-        // submit() 方法用于提交表单 (点击 Submit 按钮)
-        //document.getElementById('form1').submit();
-        document.getElementById("form1").submit();
-        //alert(<?php //echo $_POST['ssk'] ?>//);
-        // alert("getvalue()方法！！！");
+        var input = document.getElementById('content').value;
+
+        if(input == null || input == "")
+        {
+            alert("请输入查找信息!!!");
+            //返回false;
+            //input.focus();
+        }
+        else {
+            //alert(input);//提交的数值为
+            //document.getElementById('form1').submit();
+            document.getElementById('form1').submit();
+        }
     }
 </script>
 
