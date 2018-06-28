@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>查询结果</title>
-<!--    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 </head>
 <?php //require "../templates/header.php"; ?>
 <?php
